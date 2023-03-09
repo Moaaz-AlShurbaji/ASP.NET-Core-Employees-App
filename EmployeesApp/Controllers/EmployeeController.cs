@@ -8,6 +8,7 @@ namespace EmployeesApp.Controllers
         //create dbcontext object
         HRDatabaseContext db = new HRDatabaseContext();
         public IActionResult Index()
+        
         {
             List<Employee> employees = db.Employees.ToList(); 
             return View(employees);
