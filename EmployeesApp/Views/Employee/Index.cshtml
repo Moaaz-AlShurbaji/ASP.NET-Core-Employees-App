@@ -58,8 +58,8 @@
                     @Html.DisplayFor(modelItem => item.DepartmentName)
                 </td>
                 <td>
-                    <a class="btn btn-outline-success" href="">Edit</a> |
-                    <a class="btn btn-outline-danger" href="">Delete</a>
+                    <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@item.EmployeeID">Edit</a> |
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.EmployeeID">Delete</a>
                 </td>
             </tr>
         }
