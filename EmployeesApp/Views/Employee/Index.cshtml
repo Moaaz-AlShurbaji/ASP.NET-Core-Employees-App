@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<Employee>
 
 <h1>All Employees</h1>
-
+<hr />
+<a class="btn btn-outline-primary" asp-controller="Employee" asp-action="Create">Add New Employee</a>
+<hr />
 <table class="table">
     <thead>
         <tr>
@@ -58,8 +60,8 @@
                     @Html.DisplayFor(modelItem => item.DepartmentName)
                 </td>
                 <td>
-                    <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@item.EmployeeID">Edit</a> |
-                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.EmployeeID">Delete</a>
+                    <a class="btn btn-outline-success" asp-controller="Employee" asp-action="Edit" asp-route-id="@item.EmployeeID">Edit</a> |
+                    <a class="btn btn-outline-danger" asp-controller="Employee" asp-action="Delete" asp-route-id="@item.EmployeeID">Delete</a>
                 </td>
             </tr>
         }

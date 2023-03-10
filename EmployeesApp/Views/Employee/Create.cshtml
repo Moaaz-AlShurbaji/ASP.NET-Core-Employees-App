@@ -1,0 +1,45 @@
+﻿@model Employee
+@*@{
+    if (Model is null)
+        ViewData["Title"] = "Create";
+    else
+        ViewData["Title"] = "Edit";
+
+}*@
+
+@{
+    ViewData["Title"] = Model != null ? "Edit" : "Create";
+}
+
+<h2>@ViewData["Title"] Employee</h2>
+<form asp-action=@ViewData["Title"]>
+    <div class="col-lg-6 mx-auto">
+        <label asp-for="EmployeeNumber" class="control-label mt-2"></label>
+        <input type="text" asp-for="EmployeeNumber" class="form-control" />
+
+        <label asp-for="EmployeeName" class="control-label mt-2"></label>
+        <input type="text" asp-for="EmployeeName" class="form-control" />
+
+        <label asp-for="DOB" class="control-label mt-2"></label>
+        <input type="text" asp-for="DOB" class="form-control" />
+
+        <label asp-for="HiringDate" class="control-label mt-2"></label>
+        <input type="text" asp-for="HiringDate" class="form-control" />
+
+        <label asp-for="GrossSalary" class="control-label mt-2"></label>
+        <input type="text" asp-for="GrossSalary" class="form-control" />
+
+        <label asp-for="NetSalary" class="control-label mt-2"></label>
+        <input type="text" asp-for="NetSalary" class="form-control" />
+
+        <label asp-for="DepartmentId" class="control-label mt-2"></label>
+        <select asp-for="DepartmentId" class="form-control" asp-items="@(new SelectList(ViewBag.departments,"DepartmentID","DepartmentName"))">
+            <option value="">--Select Department--</option>
+        </select>
+    </div>
+    <div class="text-center mt-3">
+        <input type="submit" value="Create" class="btn btn-outline-success" />
+        <a class="btn btn-outline-secondary">Cancel</a>
+    </div>
+
+</form>

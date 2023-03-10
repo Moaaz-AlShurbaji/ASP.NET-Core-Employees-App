@@ -13,5 +13,18 @@ namespace EmployeesApp.Controllers
             List<Employee> employees = db.Employees.ToList(); 
             return View(employees);
         }
+
+        public IActionResult Create()
+        {
+            ViewBag.departments = db.Departments.ToList();
+            return View();
+        }
+
+        public IActionResult Edit(int Id)
+        {
+            var data = db.Employees.Where(e => e.EmployeeID == Id).FirstOrDefault();
+            ViewBag.departments = db.Departments.ToList();
+            return View("Create",data);
+        }
     }
 }
