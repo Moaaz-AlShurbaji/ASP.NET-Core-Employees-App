@@ -15,7 +15,7 @@
 
 <form asp-action=@ViewData["Title"]>
 
-    <div asp-validation-summary="All"></div>
+    <div class="alert-danger" asp-validation-summary="All"></div>
 
     <div class="col-lg-6 mx-auto">
         <label asp-for="EmployeeNumber" class="control-label mt-2"></label>
@@ -25,16 +25,16 @@
         <input type="text" asp-for="EmployeeName" class="form-control" />
 
         <label asp-for="DOB" class="control-label mt-2"></label>
-        <input type="text" asp-for="DOB" class="form-control" />
+        <input asp-for="DOB" class="form-control" />
 
         <label asp-for="HiringDate" class="control-label mt-2"></label>
-        <input type="text" asp-for="HiringDate" class="form-control" />
+        <input asp-for="HiringDate" class="form-control" />
 
         <label asp-for="GrossSalary" class="control-label mt-2"></label>
-        <input type="text" asp-for="GrossSalary" class="form-control" />
+        <input asp-for="GrossSalary" class="form-control" />
 
         <label asp-for="NetSalary" class="control-label mt-2"></label>
-        <input type="text" asp-for="NetSalary" class="form-control" />
+        <input asp-for="NetSalary" class="form-control" />
 
         <label asp-for="DepartmentId" class="control-label mt-2"></label>
         <select asp-for="DepartmentId" class="form-control" asp-items="@(new SelectList(ViewBag.departments,"DepartmentID","DepartmentName"))">
