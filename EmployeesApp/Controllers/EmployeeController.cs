@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using EmployeesApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeesApp.Controllers
 {
@@ -10,7 +11,8 @@ namespace EmployeesApp.Controllers
         public IActionResult Index()
         
         {
-            List<Employee> employees = db.Employees.ToList(); 
+            // include is called eager loading which can fetch the related data from other models
+            List<Employee> employees = db.Employees.Include(emp => emp.Department).ToList(); 
             return View(employees);
         }
 

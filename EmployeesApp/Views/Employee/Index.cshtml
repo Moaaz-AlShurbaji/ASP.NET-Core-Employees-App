@@ -57,7 +57,7 @@
                     @Html.DisplayFor(modelItem => item.NetSalary)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                    @Html.DisplayFor(modelItem => item.Department.DepartmentName)
                 </td>
                 <td>
                     <a class="btn btn-outline-success" asp-controller="Employee" asp-action="Edit" asp-route-id="@item.EmployeeID">Edit</a> |
