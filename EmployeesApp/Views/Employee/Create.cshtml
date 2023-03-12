@@ -17,6 +17,7 @@
 
     <div class="alert-danger" asp-validation-summary="All"></div>
 
+    <!--<input type="hidden" asp-for="EmployeeID" /> -->
     <div class="col-lg-6 mx-auto">
         <label asp-for="EmployeeNumber" class="control-label mt-2"></label>
         <input type="text" asp-for="EmployeeNumber" class="form-control" />
@@ -42,8 +43,8 @@
         </select>
     </div>
     <div class="text-center mt-3">
-        <input type="submit" value="Create" class="btn btn-outline-success" />
-        <a class="btn btn-outline-secondary">Cancel</a>
+        <input type="submit" value="Save" class="btn btn-outline-success" />
+        <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
     </div>
 
 </form>

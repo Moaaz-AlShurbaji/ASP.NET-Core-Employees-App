@@ -43,5 +43,26 @@ namespace EmployeesApp.Controllers
             ViewBag.departments = db.Departments.ToList();
             return View("Create",data);
         }
+
+        [HttpPost]
+        public IActionResult Edit(int Id, Employee employee)
+        {
+            ModelState.Remove("DepartmentName");
+            ModelState.Remove("Department");
+            if (ModelState.IsValid)
+            {
+                var emp = db.Employees.Where(e => e.EmployeeID == Id).FirstOrDefault();
+                emp.EmployeeName = employee.EmployeeName;
+                emp.DOB = employee.DOB;
+                emp.HiringDate = employee.HiringDate;
+                emp.GrossSalary = employee.GrossSalary;
+                emp.NetSalary = employee.NetSalary;
+                emp.DepartmentId = employee.DepartmentId;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.departments = db.Departments.ToList();
+            return View("Create");
+        }
     }
 }
