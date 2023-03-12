@@ -66,5 +66,13 @@ namespace EmployeesApp.Controllers
             ViewBag.departments = db.Departments.ToList();
             return View("Create");
         }
+
+        public IActionResult Delete(int Id)
+        {
+            var employee = db.Employees.Where(e => e.EmployeeID == Id).First();
+            db.Employees.Remove(employee);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
