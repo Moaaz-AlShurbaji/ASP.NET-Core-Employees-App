@@ -1,0 +1,26 @@
+﻿@model Department
+@{
+    ViewData["Title"] = Model != null ? "Edit" : "Create";
+}
+
+<h2>@ViewData["Title"] Department</h2>
+
+<form asp-action=@ViewData["Title"]>
+
+    <div class="alert-danger" asp-validation-summary="All"></div>
+
+    <!--<input type="hidden" asp-for="EmployeeID" /> -->
+    <div class="col-lg-6 mx-auto">
+        <label asp-for="DepartmentName" class="control-label mt-2"></label>
+        <input type="text" asp-for="DepartmentName" class="form-control" />
+
+        <label asp-for="DepartmentAbbr" class="control-label mt-2"></label>
+        <input type="text" asp-for="DepartmentAbbr" class="form-control" />
+
+    </div>
+    <div class="text-center mt-3">
+        <input type="submit" value="Save" class="btn btn-outline-success" />
+        <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+    </div>
+
+</form>

@@ -1,7 +1,12 @@
 ﻿@model IEnumerable<Department>
 
 <h2>Departments</h2>
+@if(TempData["message"] != null)
+    {
+        <p class="alert alert-success">@TempData["message"]</p>
+    }
 
+<a class="btn btn-outline-primary" asp-controller="Department" asp-action="Create">Add New Department</a>
 <table class="table">
     <thead>
         <tr>
