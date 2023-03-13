@@ -8,12 +8,22 @@ namespace EmployeesApp.Controllers
     {
         //create dbcontext object
         HRDatabaseContext db = new HRDatabaseContext();
-        public IActionResult Index()
-        
+        public IActionResult Index(string searchByName)
         {
-            // include is called eager loading which can fetch the related data from other models
-            List<Employee> employees = db.Employees.Include(emp => emp.Department).ToList(); 
-            return View(employees);
+            if(string.IsNullOrEmpty(searchByName))
+            {
+                // include is called eager loading which can fetch the related data from other models
+                List<Employee> employees = db.Employees.Include(emp => emp.Department).ToList();
+                return View(employees);
+            }
+            else
+            {
+                List<Employee> employees = db.Employees.Include(emp => emp.Department).Where(emp => emp.EmployeeName.ToLower().Contains(searchByName.ToLower())).ToList();
+                return View(employees);
+            }
+            
+
+
         }
 
         public IActionResult Create()
@@ -74,5 +84,7 @@ namespace EmployeesApp.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+       
     }
 }
