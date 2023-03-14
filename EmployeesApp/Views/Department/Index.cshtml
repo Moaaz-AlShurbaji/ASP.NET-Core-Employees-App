@@ -1,9 +1,13 @@
 ﻿@model IEnumerable<Department>
 
 <h2>Departments</h2>
-@if(TempData["message"] != null)
+@if(TempData["added"] != null)
     {
-        <p class="alert alert-success">@TempData["message"]</p>
+        <p class="alert alert-success">@TempData["added"]</p>
+    }
+    else if(TempData["removed"] != null)
+    {
+    <p class="alert alert-danger">@TempData["removed"]</p>
     }
 
 <a class="btn btn-outline-primary" asp-controller="Department" asp-action="Create">Add New Department</a>

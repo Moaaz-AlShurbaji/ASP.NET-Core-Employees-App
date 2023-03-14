@@ -22,7 +22,7 @@ namespace EmployeesApp.Controllers
         {
             db.Departments.Add(department);
             db.SaveChanges();
-            TempData["message"] = "Department added successfuly";
+            TempData["added"] = "Department added successfuly";
             return RedirectToAction("Index");
         }
 
@@ -31,7 +31,7 @@ namespace EmployeesApp.Controllers
             var department = db.Departments.Where(dep => dep.DepartmentID == Id).First();
             db.Departments.Remove(department);
             db.SaveChanges();
-            TempData["message"] = "Department Removed";
+            TempData["removed"] = "Department Removed";
             return RedirectToAction("Index");
         }
     }

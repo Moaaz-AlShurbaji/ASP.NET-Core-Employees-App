@@ -1,6 +1,14 @@
 ﻿@model IEnumerable<Employee>
 
 <h1>All Employees</h1>
+@if(TempData["added"] != null)
+{
+    <p class="alert alert-success">@TempData["added"]</p>
+}
+else if (TempData["removed"] != null)
+{
+    <p class="alert alert-danger">@TempData["removed"]</p>
+}
 <hr />
 @using (Html.BeginForm())
 {

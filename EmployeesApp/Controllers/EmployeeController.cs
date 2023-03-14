@@ -43,6 +43,7 @@ namespace EmployeesApp.Controllers
             {
                 db.Employees.Add(employee);
                 db.SaveChanges();
+                TempData["added"] = "Employee added successfuly";
                 return RedirectToAction("Index");
             }
             ViewBag.departments = db.Departments.ToList();
@@ -82,6 +83,7 @@ namespace EmployeesApp.Controllers
             var employee = db.Employees.Where(e => e.EmployeeID == Id).First();
             db.Employees.Remove(employee);
             db.SaveChanges();
+            TempData["removed"] = "Employee removed successfuly";
             return RedirectToAction("Index");
         }
 
