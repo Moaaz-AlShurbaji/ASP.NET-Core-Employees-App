@@ -20,10 +20,35 @@ namespace EmployeesApp.Controllers
         [HttpPost]
         public IActionResult Create(Department department)
         {
-            db.Departments.Add(department);
-            db.SaveChanges();
-            TempData["added"] = "Department added successfuly";
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                db.Departments.Add(department);
+                db.SaveChanges();
+                TempData["added"] = "Department added successfuly";
+                return RedirectToAction("Index");
+            }
+            return View(department);
+            
+        }
+
+        public IActionResult Edit(int Id)
+        {
+            var department = db.Departments.Where(dep => dep.DepartmentID == Id).First();
+            return View("Create",department);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int Id, Department department)
+        {
+            var data = db.Departments.Where(dep => dep.DepartmentID == Id).First();
+            if (ModelState.IsValid)
+            {
+                data.DepartmentName = department.DepartmentName;
+                data.DepartmentAbbr = department.DepartmentAbbr;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View("Create", data);
         }
 
         public IActionResult Delete(int Id)
